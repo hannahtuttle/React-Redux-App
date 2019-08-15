@@ -1,9 +1,13 @@
 import {
     FETCH_BREWERY_DATA_START,
 FETCH_BREWERY_DATA_SUCCESS,
-FETCH_BREWERY_DATA_FAILURE} from '../actions'
+FETCH_BREWERY_DATA_FAILURE,
+FETCH_PHOTO_DATA_START,
+FETCH_PHOTO_DATA_SUCCESS, 
+FETCH_PHOTO_DATA_FAILURE} from '../actions'
 
 const initialState = {
+    photos: [],
     breweries: [],
     test: "It's working",
     isLoading: false,
@@ -31,6 +35,24 @@ export const reducer = (state =initialState, action) => {
                 ...state,
                 error: action.payload
             }
+        case FETCH_PHOTO_DATA_START:
+            return {
+                ...state, 
+                isLoading: true,
+                error: ''
+            }
+        case FETCH_PHOTO_DATA_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                photos: action.payload,
+                error: ''
+            }
+        case FETCH_PHOTO_DATA_FAILURE:
+                return {
+                    ...state,
+                    error: action.payload
+                }
         default:
             return state
     }
