@@ -22,7 +22,7 @@ export const getData = () => dispatch => {
 
 export const getPhotos = () => dispatch => {
     dispatch({type: FETCH_PHOTO_DATA_START});
-    axios.get('https://picsum.photos/v2/list?limit=20')
+    axios.get('https://picsum.photos/v2/list?page=2&limit=20')
     .then(response => {
         console.log(response.data)
         dispatch({type: FETCH_PHOTO_DATA_SUCCESS, payload: response.data})
